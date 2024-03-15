@@ -70,7 +70,7 @@ public class CameraMovement : MonoBehaviour
     }
     private Vector3 ClampCamera(Vector3 targetPosition)
     {
-        float camHeight = cam.orthographicSize;
+        float camHeight = cam.orthographicSize; 
         float camWidth = cam.orthographicSize * cam.aspect;
 
         float minX = mapMinX + camWidth;
