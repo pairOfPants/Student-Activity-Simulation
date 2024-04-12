@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private Camera cam;
+    public Camera cam;
 
     [SerializeField]
     private float zoomStep, minCameraZoom, maxCameraZoom;

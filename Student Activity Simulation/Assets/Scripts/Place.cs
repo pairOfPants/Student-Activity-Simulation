@@ -2,22 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Place : MonoBehaviour
+public class Place
 {
-    protected string Name;
-    protected double XStart;
-    protected double XEnd;
-    protected double YStart;
-    protected double YEnd;
-    // Start is called before the first frame update
-    void Start()
+    public const double OFF_CAMPUS_RESIDENCE_COORDINATE = 20000;
+    public string Name;
+    public double XStart;
+    public double XEnd;
+    public double YStart;
+    public double YEnd;
+
+    //public GameObject locationOnMap;
+    
+    public Place(string name) //for commuters
     {
-        
+        this.Name = name;
+        XStart = OFF_CAMPUS_RESIDENCE_COORDINATE;
+        XEnd = OFF_CAMPUS_RESIDENCE_COORDINATE;
+        YStart = OFF_CAMPUS_RESIDENCE_COORDINATE;
+        YEnd = OFF_CAMPUS_RESIDENCE_COORDINATE;
+        //locationOnMap = null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Place(string name, int XStart, int xEnd, int YStart, int YEnd)
     {
-        
+        this.Name = name;
+        this.XStart = XStart;
+        this.XEnd = xEnd;
+        this.YStart = YStart;
+        this.YEnd = YEnd;
+    }
+
+    public override string ToString()
+    {
+        return Name;
     }
 }

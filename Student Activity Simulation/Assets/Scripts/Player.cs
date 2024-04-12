@@ -9,10 +9,20 @@ public class Player : MonoBehaviour
     public int Age;
     public string Address;
 
-    // Start is called before the first frame update
-    void Start()
+    public Player(string fName, string lName, int age, string address)
     {
-        
+        FirstName = fName;
+        LastName = lName;
+        Age = age;
+        Address = address;
+    }
+
+    public Player(string fName, string lName, int age)
+    {
+        FirstName = fName;
+        LastName = lName;
+        Age = age;
+        Address = "";
     }
 
     public string GetFirstName() {return FirstName;}
@@ -23,11 +33,4 @@ public class Player : MonoBehaviour
     public void SetAge(int age) {Age = age;}
     public string GetAddress(){return Address;}
     public void SetAddress(string address){Address = address;}
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

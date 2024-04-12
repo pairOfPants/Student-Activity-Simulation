@@ -4,25 +4,47 @@ using UnityEngine;
 
 public class Student : Player
 {
-    protected List<Activity> dailySchedule;
-    protected List<Activity> totalActivities;
-    protected Place residence;
-    protected bool isCommuter;
-    protected int height;
-    protected float walkingSpeed;
-    // Start is called before the first frame update
-    void Start()
+    public List<Activity> dailySchedule;
+    public List<Activity> totalActivities;
+    public Place residence;
+    public bool isCommuter;
+    public int height;
+    public float walkingSpeed;
+
+    public List<Vector3> path;
+    private bool needToMove;
+
+    public int stepsMoved = 0;
+    public int stepsToGo = 0;
+    
+    public Student(string fName, string lName, int age, string address, bool isCommuter, int height) : base(fName, lName, age, address)
     {
+        this.isCommuter = isCommuter;
+        this.height = height;
+        if(!isCommuter) 
+        {
+            GameObject temp = GameObject.Find(address);
+            //residence =  new Place(address, temp.position.)
+            //NEED to find a way to take game object and find its corners
+        }
+        else residence = new Place(address);
+
         dailySchedule = new List<Activity>();
         totalActivities = new List<Activity>();
-
         walkingSpeed = calculateWalkSpeed();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(path != null && path.Count > 0) needToMove = true;
+        else needToMove = false;
+
+        if(needToMove)
+        {
+            stepsMoved++;
+            Move(path, (float)stepsMoved/stepsToGo);
+            path.Remove(path[0]);
+        }
     }
     public List<Activity> GenerateSchedule(int dayOfWeek)
     {
@@ -83,8 +105,20 @@ public class Student : Player
         return walkingSpeed;
     }
 
-    public float calculateWalkTime(float distance)
+    public float calculateWalkTime(Vector3 start, Vector3 end)
     {
+        float xDist = end.x-start.x;
+        float yDist = end.y-start.y;
+        float distance = Mathf.Sqrt((xDist*xDist)-(yDist*yDist));
         return distance/walkingSpeed;
     }
+
+    public void Move(List<Vector3> path, float percentThere)
+    {
+        Transform transform = this.GetComponent<Transform>();
+        if(path.Count > 1)transform.position = Vector3.Lerp(path[0], path[1], Time.deltaTime * percentThere*walkingSpeed * 100000000000);
+        else transform.position = Vector3.Lerp(transform.position, path[0], Time.deltaTime * percentThere* walkingSpeed * 100000000000);
+
+    }
+
 }
