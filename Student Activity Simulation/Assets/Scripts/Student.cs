@@ -116,8 +116,8 @@ public class Student : Player
     public void Move(List<Vector3> path, float percentThere)
     {
         Transform transform = this.GetComponent<Transform>();
-        if(path.Count > 1)transform.position = Vector3.Lerp(path[0], path[1], Time.deltaTime * percentThere*walkingSpeed * 100000000000);
-        else transform.position = Vector3.Lerp(transform.position, path[0], Time.deltaTime * percentThere* walkingSpeed * 100000000000);
+        if(path.Count > 1)transform.position = Vector3.Lerp(path[0], path[1], Time.deltaTime * percentThere);
+        else transform.position = Vector3.Lerp(transform.position, path[0], Time.deltaTime * percentThere* walkingSpeed);
 
     }
 
