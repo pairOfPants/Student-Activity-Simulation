@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
         LastName = lName;
         Age = age;
         Address = address;
+
+        GetComponent<Player>().FirstName = fName;
+        GetComponent<Player>().LastName = lName;
+        GetComponent<Player>().Age = age;
+        GetComponent<Player>().Address = address;
     }
 
     public Player(string fName, string lName, int age)

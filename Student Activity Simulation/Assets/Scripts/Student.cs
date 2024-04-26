@@ -12,39 +12,51 @@ public class Student : Player
     public float walkingSpeed;
 
     public List<Vector3> path;
-    private bool needToMove;
+    //MOVING VARIABLES
+    public bool needToMove;
 
     public int stepsMoved = 0;
     public int stepsToGo = 0;
+    public Vector3 currentWorldPosition;
+    public Place currentPlace; //where student currently is - updated after every completed move
+    public Place destinationPlace; //where student is trying to go - will be null if nowhere to go
+    
+    public static Student Instance { get; private set; }
     
     public Student(string fName, string lName, int age, string address, bool isCommuter, int height) : base(fName, lName, age, address)
     {
+        Instance = this;
         this.isCommuter = isCommuter;
         this.height = height;
-        if(!isCommuter) 
-        {
-            GameObject temp = GameObject.Find(address);
-            //residence =  new Place(address, temp.position.)
-            //NEED to find a way to take game object and find its corners
-        }
-        else residence = new Place(address);
+        // if(!isCommuter) 
+        // {
+        //     GameObject temp = GameObject.Find(address);
+
+        //     //residence =  new Place(address, temp.position.)
+        //     //NEED to find a way to take game object and find its corners
+        // }
+        // else residence = new Place(address);
+
 
         dailySchedule = new List<Activity>();
         totalActivities = new List<Activity>();
         walkingSpeed = calculateWalkSpeed();
+
+        currentWorldPosition = residence.center;
+        needToMove = false;
+        
     }
 
     void Update()
     {
-        if(path != null && path.Count > 0) needToMove = true;
-        else needToMove = false;
+        // if(currentWorldPosition != destinationPlace.center) needToMove = true;
+        // else needToMove = false;
 
-        if(needToMove)
-        {
-            stepsMoved++;
-            Move(path, (float)stepsMoved/stepsToGo);
-            path.Remove(path[0]);
-        }
+
+        // if(needToMove)
+        // {
+        //     Move(path, currentWorldPosition);
+        // }
     }
     public List<Activity> GenerateSchedule(int dayOfWeek)
     {
@@ -86,6 +98,15 @@ public class Student : Player
 
         return todayEvents;
     }
+
+    public void InsertActivity(Activity temp, int currentDayOfWeek) //MUST BE 0-6
+    {
+        totalActivities.Add(temp);
+        if(temp.Weekdays[currentDayOfWeek]) //if the activity happens today regenerate daily schedule
+        {
+            GenerateSchedule(currentDayOfWeek);
+        }
+    }
     public float calculateDistance(Place to, Place from)
     {
         return 0;
@@ -113,12 +134,19 @@ public class Student : Player
         return distance/walkingSpeed;
     }
 
-    public void Move(List<Vector3> path, float percentThere)
+    public void Move(List<Vector3> path, Vector3 currentPosition)
     {
         Transform transform = this.GetComponent<Transform>();
-        if(path.Count > 1)transform.position = Vector3.Lerp(path[0], path[1], Time.deltaTime * percentThere);
-        else transform.position = Vector3.Lerp(transform.position, path[0], Time.deltaTime * percentThere* walkingSpeed);
-
+        if(currentPosition == path[0]) path.RemoveAt(0);
+        
+        float xDirection = (path[0].x-currentPosition.x)/Mathf.Abs(path[0].x-currentPosition.x);
+        float yDirection = (path[0].y-currentPosition.y)/Mathf.Abs(path[0].y-currentPosition.y);
+        
+        if(path.Count > 0) transform.position  = Vector3.Lerp(currentPosition, new Vector3(currentPosition.x + (5*xDirection), currentPosition.y + (5*yDirection)), Time.deltaTime);
+        
+        // if(path.Count > 1)transform.position = Vector3.Lerp(path[0], path[1], Time.deltaTime * percentThere);
+        // else transform.position = Vector3.Lerp(transform.position, path[0], Time.deltaTime * percentThere* walkingSpeed);
     }
+
 
 }

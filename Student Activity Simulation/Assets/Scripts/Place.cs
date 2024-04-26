@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Place
 {
-    public const double OFF_CAMPUS_RESIDENCE_COORDINATE = 20000;
+    public const float OFF_CAMPUS_RESIDENCE_COORDINATE = 20000f;
     public string Name;
-    public double XStart;
-    public double XEnd;
-    public double YStart;
-    public double YEnd;
+    public float XStart;
+    public float XEnd;
+    public float YStart;
+    public float YEnd;
+    
+    public Vector3 center;
 
     //public GameObject locationOnMap;
     
@@ -20,16 +22,18 @@ public class Place
         XEnd = OFF_CAMPUS_RESIDENCE_COORDINATE;
         YStart = OFF_CAMPUS_RESIDENCE_COORDINATE;
         YEnd = OFF_CAMPUS_RESIDENCE_COORDINATE;
+        center = new Vector3((XStart+XEnd)/2, (YStart+YEnd)/2);
         //locationOnMap = null;
     }
 
-    public Place(string name, int XStart, int xEnd, int YStart, int YEnd)
+    public Place(string name, float XStart, float xEnd, float YStart, float YEnd)
     {
         this.Name = name;
         this.XStart = XStart;
         this.XEnd = xEnd;
         this.YStart = YStart;
         this.YEnd = YEnd;
+        center = new Vector3((XStart+XEnd)/2, (YStart+YEnd)/2);
     }
 
     public override string ToString()
