@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 
 public class Driver : MonoBehaviour
 {
-     public GameObject prefab;
-     private Student studentClass;
+    public GameObject prefab;
+    private Student studentClass;
     private Pathfinding pathfinding;
     private Grid<PathNode> grid;
 
@@ -22,6 +23,10 @@ public class Driver : MonoBehaviour
     private float startTime;
     private float elapsedTime;
     GameObject gameTime;
+
+    //UI ELEMENTS
+    public GameObject playerStatsUI;
+    public Camera cam;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +52,7 @@ public class Driver : MonoBehaviour
         studentClass = prefab.GetComponent<Student>();
         totalPlaces = new List<Place>();
         totalStudents = new List<Student>();
-
+        playerStatsUI.SetActive(false);
 
         //Logic to get corners of map to load into grid
         RectTransform rect = mapOfUMBC.GetComponent<RectTransform>();
@@ -94,6 +99,29 @@ public class Driver : MonoBehaviour
             if(s.needToMove)
             {
                 Move(s, s.GetComponent<Student>().path, s.GetComponent<Student>().currentWorldPosition);
+            }
+            if(Input.GetMouseButtonDown(0))
+            {
+                if(approximatelyEqual(s.GetComponent<Student>().currentWorldPosition, cam.ScreenToWorldPoint(Input.mousePosition)))
+                {
+                    playerStatsUI.SetActive(true);
+                    TMP_InputField[] textFields = playerStatsUI.GetComponents<TMP_InputField>();
+                    Debug.Log(textFields.Length);
+                    foreach(TMP_InputField text in textFields)
+                    {
+                        if(text.name == "First Name Input")
+                        {
+                            Debug.Log("FIRST NAME CHANGED");
+                            text.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshPro>().text = s.GetComponent<Student>().FirstName;
+                        }
+                        if(text.name == "Last Name Input")
+                        {
+                            Debug.Log("LAST NAME CHANGED");
+                            text.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshPro>().text = s.GetComponent<Student>().LastName;
+                        }
+                    }
+                }
+                else playerStatsUI.SetActive(false);
             }
         }
     }
@@ -151,6 +179,7 @@ public class Driver : MonoBehaviour
                 float yDirection = (path[0].y-currentPosition.y)/Mathf.Abs(path[0].y-currentPosition.y);
 
             student.transform.position = Vector3.Lerp(currentPosition, new Vector3(currentPosition.x + (5*xDirection), currentPosition.y + (5*yDirection)), Time.deltaTime*student.GetComponent<Student>().walkingSpeed);
+            student.GetComponent<Student>().currentWorldPosition = student.transform.position;
             }
             catch (System.Exception)
             {
@@ -175,6 +204,7 @@ public class Driver : MonoBehaviour
                     student.currentPlace = student.destinationPlace;
                     student.transform.position = student.destinationPlace.center;
                     student.needToMove = false;
+                    student.GetComponent<Student>().currentWorldPosition = student.transform.position;
                     //continue;
                }
         }
@@ -218,6 +248,14 @@ public class Driver : MonoBehaviour
             if(p.Name == name) return p;
         }
         return new Place(name);
+    }
+
+    private bool approximatelyEqual(Vector3 v1, Vector3 v2)
+    {
+        int misclickRadius = 5;
+
+        if(Mathf.Abs(v1.x-v2.x) <= misclickRadius && Mathf.Abs(v1.y-v2.y) <= misclickRadius) return true;
+        else return false;
     }
 
 }
