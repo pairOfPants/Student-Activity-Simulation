@@ -33,7 +33,7 @@
 The project, in its simplicity, is a mathmatics-based approach to determining the locations of Students on the UMBC campus at any given time. The Project has interactive UI elements drawn to the screen, but the main logic takes place "under the hood" and will be documented below. 
 
 ![](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/Student%20Simulation%20Many%20Students.jpg)
-![]()
+![](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/Student%20Simulation%201.jpg)
 
 This simulation represents an algorithmic artificial intelligence model where students decide where and when to go based off of a variety of factors
 1. Walking speed
