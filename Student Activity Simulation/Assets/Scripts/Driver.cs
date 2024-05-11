@@ -75,7 +75,14 @@ public class Driver : MonoBehaviour
 
 
         //STUDENT LOGIC HERE
-        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Potomac Hall", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Public Policy", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "LH1", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Sondheim", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Chesapeake Hall", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "True Grits", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Library", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Commons", false, 73));
+        totalStudents.Add(InstantiateStudent("Aidan", "Denham", 19, "Pool", false, 73));
         GeneratePath(totalStudents[0],findPlace("True Grits"));
 
 
