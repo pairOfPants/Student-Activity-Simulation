@@ -85,4 +85,5 @@ In an attempt to further develop this project, the following could be added:
 ## Use Cases
 As mentioned in the top of the file, this is a very niche project with specific use-cases. The main use case for this project is for UMBC to gain insight on the whereabouts of their students at any given date and time. This will allow them to plan better school-wide functions that will engage their students more. While I do not have access to each student’s name, schedule, residence, and athlete status, the UMBC staff does. It is my aim for them to download this project, add each student’s data from their database as a student in the simulation, and have accurate enough calculations that the simulation will correctly predict the location and business of each added student. 
 
+# License
 
