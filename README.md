@@ -2,28 +2,32 @@
 ***NOTE** This was a proof-of-concept project for my University, and as such was tailored specifically to the UMBC campus. If you wish to modify the code to suit it to a different College, do not download the executable and instead modify the Unity project to your specific use-case. 
 
 ## Table of Contents
-<ul>
-  <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-description-'>Description</a></i></small></li>
-  <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-inspiration-'>Inspiration</a></i></small></li>
-  <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-uml-diagram-of-project'>UML Diagram</a></i></small></li>
-  <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-different-classes-'>Different Classes</a></i></small></li>
-  <ol padding-bottom: 0;">
-   <li style="margin-left:2em; padding-bottom: 0;"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-custom-time-class'>Custom Time Class</a></i></small></li>
-  <li style="margin-left:2em"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-player-class-'>Player Class</a></i></small></li>
-   <li style="margin-left:2em; padding-bottom: 0;"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-place-class-'>Place Class</a></i></small></li>
-   <li style="margin-left:2em; padding-bottom: 0;"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-activity-class-'>Activity Class</a></i></small></li>
-   <li style="margin-left:2em; padding-bottom: 0;"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-student-class-'>Student Class</a></i></small></li>
-   </ol>
-  </li>
-   <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-other-information-'>Other Information</a></i></small></li>
-  <ol padding-bottom: 0;">
-   <li style="margin-left:2em; padding-bottom: 0;"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-future-upgrades'>Future Upgrades to Project</a></i></small></li>
-  <li style="margin-left:2em"><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-use-cases'>Use Cases</a></i></small></li>
-  </ol>
-  </li>
+ 1. [Description](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#description)
 
- <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-license-'>License</a></i></small></li>
- </ul>
+       a. [Inspiration](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#inspiration)
+   
+ 2. [UML Diagram](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#uml-diagram-of-project)
+ 3. [Different Classes](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#different-classes)
+
+     a. [Custom Time Class](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#custom-time-class)
+
+     b. [Player Class](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#player-class)
+
+     c. [Place Class](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#place-class)
+
+     d. [Activity Class](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#activity-class)
+
+     e. [Student Class](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#student-class)
+   
+ 4. [Pathfinding Aspect](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#pathfinding-aspect)
+ 5. [Other Information](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#other-information)
+
+     a. [Future Upgrades](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#future-upgrades)
+
+     b. [Use Cases](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#use-cases)
+   
+ 6. [License](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#license)
+
 
 ## Description
 The project, in its simplicity, is a mathmatics-based approach to determining the locations of Students on the UMBC campus at any given time. The Project has interactive UI elements drawn to the screen, but the main logic takes place "under the hood" and will be documented below. 
