@@ -22,7 +22,7 @@
   </ol>
   </li>
 
- <li><small><i><a href='https://github.com/pairOfPants/RangSecurity/blob/main/README.md#-license-'>License</a></i></small></li>
+ <li><small><i><a href='https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/README.md#-license-'>License</a></i></small></li>
  </ul>
 
 ## Description
