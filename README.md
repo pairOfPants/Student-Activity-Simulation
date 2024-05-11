@@ -48,8 +48,7 @@ As a student-athlete living in the freshman dorm halls, I see both sides of the 
  
 
 ## UML Diagram of Project
-
-**INSERT UML HERE**
+![](https://github.com/pairOfPants/Student-Activity-Simulation/blob/main/UML.png)
 
 ## Different Classes
 In an effort to make the project as organized as possible, there are many classes throughout the project. Half of which pertain to the actual logic of the Students in the simulation, and the other half dealing with the pathfinding algorithm that students use. 
