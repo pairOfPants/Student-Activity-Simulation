@@ -51,19 +51,19 @@ As a student-athlete living in the freshman dorm halls, I see both sides of the 
 ## Different Classes
 In an effort to make the project as organized as possible, there are many classes throughout the project. Half of which pertain to the actual logic of the Students in the simulation, and the other half dealing with the pathfinding algorithm that students use. 
 
-##### Custom Time Class
+#### Custom Time Class
 This class has values for seconds, minutes, hours, and days. It runs on a timer and essentially is a custom-made 7 day timer that the rest of the program uses to run.
 
-##### Player Class
+#### Player Class
 The Player class is the most basic class in the project. It simply is the building block for Student objects (child class) and takes in information such as name, age, and address for the student. 
 
-##### Place Class
+#### Place Class
 The Place class is a simple class, as it just has the name of the place and float values for startX, endX, startY, endY. This implementation of a Place limits objects to being rectangular, but for a proof-of-concept project like this all campus buildings can be estimated to a rectangle of best fit. 
 
-##### Activity Class
+#### Activity Class
 The activity class is another building-block class that lets users create Activity Objects. An Activity consists of a name, Place object of where it is being held, CustomTime objects of when it starts and ends, and information such as weekly frequency of activity, total times completed, and priority. The priority is decided by the end-user, but the goal is to determine a way to rank importance of events. For example, if a Student had a frat party and a final at the same time, the final would have a higher priority and thus would be the Activity that the Student does. 
 
-##### Student Class
+#### Student Class
 The Student class is the heart of the project, and utilizes all other classes in different ways. 
 
 1. First and foremost, it takes two Place objects representing the Student's current place and their destination. If the student does not need to travel anywhere, their destination will be equal to the current place. The student also takes a Vector3 representing its current world position, so that calculations about distance can be made more accurately.
